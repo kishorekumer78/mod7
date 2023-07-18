@@ -30,6 +30,11 @@ function TodoNew() {
         handleDeleteTask(index);
         // console.log(task);
     }
+    const handleDeleteCompleteTask = (index) =>{
+        const ct = [...completedTask];
+        ct.splice(index, 1);
+        setCompletedTask(ct);
+    }
 
     return (
         <div className="container mx-auto mt-8 max-w-2xl">
@@ -86,6 +91,12 @@ function TodoNew() {
                                     className="bg-gray-700 flex items-center justify-between border border-gray-400 rounded py-2 px-4 mb-2"
                                 >
                                     <span className="text-white line-through">{ct}</span>
+                                    <button
+                                        className="text-red-500 hover:text-red-600 border-2 px-2 py-1 rounded-lg border-red-700"
+                                        onClick={() => handleDeleteCompleteTask(index)}
+                                    >
+                                        Delete
+                                    </button>
                                 </li>
                             ))}
                         </ul>
